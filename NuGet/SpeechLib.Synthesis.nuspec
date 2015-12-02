@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SpeechLib.Synthesis</id>
+    <version>1.0.0</version>
+    <title>SpeechLib.Synthesis</title>
+    <authors>birbilis</authors>
+    <owners>birbilis</owners>
+    <licenseUrl>https://SpeechLib.codeplex.com/SourceControl/latest#LICENSE.txt</licenseUrl>
+    <projectUrl>https://SpeechLib.codeplex.com</projectUrl>
+    <iconUrl>http://zoomicon.com/logo.jpg</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <developmentDependency>true</developmentDependency>
+    <description>SpeechLib - Speech Synthesis</description>
+    <releaseNotes />
+    <copyright>Copyright 2015</copyright>
+    <tags>Speech Synthesis</tags>
+    <dependencies>
+      <group targetFramework="net40">
+        <dependency id="SpeechLib.Models" version="1.0.0" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\SpeechLib.Synthesis\bin\Release\SpeechLib.Synthesis.dll" target="lib\net40\SpeechLib.Synthesis.dll" />
+  </files>
+</package>

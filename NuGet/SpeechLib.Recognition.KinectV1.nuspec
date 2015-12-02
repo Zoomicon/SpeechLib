@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SpeechLib.Recognition.KinectV1</id>
+    <version>1.0.0</version>
+    <title>SpeechLib.Recognition.KinectV1</title>
+    <authors>birbilis</authors>
+    <owners>birbilis</owners>
+    <licenseUrl>https://SpeechLib.codeplex.com/SourceControl/latest#LICENSE.txt</licenseUrl>
+    <projectUrl>https://SpeechLib.codeplex.com</projectUrl>
+    <iconUrl>http://zoomicon.com/logo.jpg</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <developmentDependency>true</developmentDependency>
+    <description>SpeechLib - Speech Recognition for Kinect v1 sensor</description>
+    <releaseNotes />
+    <copyright>Copyright 2015</copyright>
+    <tags>Speech Recognition Kinect</tags>
+    <dependencies>
+      <group targetFramework="net40">
+        <dependency id="SpeechLib.Recognition" version="1.0.0" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\SpeechLib.Recognition.KinectV1\bin\Release\SpeechLib.Recognition.KinectV1.dll" target="lib\net40\SpeechLib.Recognition.KinectV1.dll" />
+  </files>
+</package>

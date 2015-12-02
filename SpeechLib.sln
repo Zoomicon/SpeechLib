@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechLib.Models", "SpeechLib.Models\SpeechLib.Models.csproj", "{6CA7C7A7-7FA5-4BF7-B812-BBD770188B47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechLib.Synthesis", "SpeechLib.Synthesis\SpeechLib.Synthesis.csproj", "{92B66BC8-AA99-47B3-B29F-3DF2273B15F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechLib.Recognition", "SpeechLib.Recognition\SpeechLib.Recognition.csproj", "{696782F3-6658-48F6-9B80-42387EAEBB55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechLib.Recognition.KinectV1", "SpeechLib.Recognition.KinectV1\SpeechLib.Recognition.KinectV1.csproj", "{32A3742D-731F-4158-BFE2-57F67BBB36A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{3F4844EE-87D0-448B-8D79-AF954F23BAC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CA7C7A7-7FA5-4BF7-B812-BBD770188B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA7C7A7-7FA5-4BF7-B812-BBD770188B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CA7C7A7-7FA5-4BF7-B812-BBD770188B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CA7C7A7-7FA5-4BF7-B812-BBD770188B47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92B66BC8-AA99-47B3-B29F-3DF2273B15F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92B66BC8-AA99-47B3-B29F-3DF2273B15F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92B66BC8-AA99-47B3-B29F-3DF2273B15F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92B66BC8-AA99-47B3-B29F-3DF2273B15F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{696782F3-6658-48F6-9B80-42387EAEBB55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{696782F3-6658-48F6-9B80-42387EAEBB55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{696782F3-6658-48F6-9B80-42387EAEBB55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{696782F3-6658-48F6-9B80-42387EAEBB55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32A3742D-731F-4158-BFE2-57F67BBB36A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32A3742D-731F-4158-BFE2-57F67BBB36A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32A3742D-731F-4158-BFE2-57F67BBB36A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32A3742D-731F-4158-BFE2-57F67BBB36A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

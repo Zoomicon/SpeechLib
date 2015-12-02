@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>SpeechLib.Models</id>
+        <version>1.0.0</version>
+        <title>SpeechLib.Models</title>
+        <authors>birbilis</authors>
+        <owners>birbilis</owners>
+        <licenseUrl>https://SpeechLib.codeplex.com/SourceControl/latest#LICENSE.txt</licenseUrl>
+        <projectUrl>https://SpeechLib.codeplex.com</projectUrl>
+        <iconUrl>http://zoomicon.com/logo.jpg</iconUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <developmentDependency>true</developmentDependency>
+        <description>SpeechLib - Models</description>
+        <releaseNotes />
+        <copyright>Copyright 2015</copyright>
+        <tags>Speech Synthesis Recognition Kinect</tags>
+        <dependencies>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\SpeechLib.Models\bin\Release\SpeechLib.Models.dll" target="lib\net40\SpeechLib.Models.dll" />
+    </files>
+</package>
