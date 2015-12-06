@@ -12,6 +12,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechLib.Recognition.KinectV1", "SpeechLib.Recognition.KinectV1\SpeechLib.Recognition.KinectV1.csproj", "{32A3742D-731F-4158-BFE2-57F67BBB36A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{3F4844EE-87D0-448B-8D79-AF954F23BAC3}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet\SpeechLib.Models.nuspec = NuGet\SpeechLib.Models.nuspec
+		NuGet\SpeechLib.Recognition.KinectV1.nuspec = NuGet\SpeechLib.Recognition.KinectV1.nuspec
+		NuGet\SpeechLib.Recognition.nuspec = NuGet\SpeechLib.Recognition.nuspec
+		NuGet\SpeechLib.Synthesis.nuspec = NuGet\SpeechLib.Synthesis.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

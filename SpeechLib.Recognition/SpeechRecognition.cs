@@ -1,6 +1,6 @@
 ﻿//Project: SpeechLib (http://SpeechLib.codeplex.com)
 //File: SpeechRecognition.cs
-//Version: 20151202
+//Version: 20151206
 
 using SpeechLib.Models;
 using System;
@@ -91,6 +91,14 @@ namespace SpeechLib.Recognition
     #region --- Properties ---
 
     /// <summary>
+    /// Gets the speech recognition engine.
+    /// </summary>
+    /// <value>
+    /// The speech recognition engine.
+    /// </value>
+    public SpeechRecognitionEngine SpeechRecognitionEngine { get { return speechRecognitionEngine; } }
+
+    /// <summary>
     /// For long recognition sessions (a few hours or more), it may be beneficial to turn off adaptation of the acoustic model.
     /// This will prevent recognition accuracy from degrading over time.
     /// </summary>
@@ -109,14 +117,19 @@ namespace SpeechLib.Recognition
       return new SpeechRecognitionEngine(); //use current system default recognition engine
     }
 
-    public void LoadGrammar(string grammar, string name)
+    public void LoadGrammar(Grammar grammar)
     {
-      speechRecognitionEngine.LoadGrammar(SpeechRecognitionUtils.CreateGrammarFromXML(grammar, name));
+      speechRecognitionEngine.LoadGrammar(grammar);
+    }
+
+    public void LoadGrammar(string xml, string name)
+    {
+      LoadGrammar(SpeechRecognitionUtils.CreateGrammarFromXML(xml, name));
     }
 
     public void LoadGrammar(Stream stream, string name)
     {
-      speechRecognitionEngine.LoadGrammar(new Grammar(stream) { Name = name });
+      LoadGrammar(new Grammar(stream) { Name = name });
     }
 
     public void SetInputToDefaultAudioDevice()
@@ -124,9 +137,14 @@ namespace SpeechLib.Recognition
       speechRecognitionEngine.SetInputToDefaultAudioDevice();
     }
 
-    public void Start()
+    public void Start(bool stopOnRecognition = false)
     {
-      speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple); //start speech recognition (set to keep on firing speech recognition events, not just once)
+      speechRecognitionEngine.RecognizeAsync(stopOnRecognition ? RecognizeMode.Single : RecognizeMode.Multiple);
+    }
+
+    public void Stop()
+    {
+      speechRecognitionEngine.RecognizeAsyncStop();
     }
 
     #endregion

@@ -1,6 +1,6 @@
 ﻿//Project: SpeechLib (http://SpeechLib.codeplex.com)
 //File: SpeechSynthesis.cs
-//Version: 20151202
+//Version: 20151205
 
 using SpeechLib.Models;
 using System;
@@ -91,6 +91,15 @@ namespace SpeechLib.Synthesis
     #endregion
 
     #region --- Properties ---
+
+    /// <summary>
+    /// Gets the speech synthesis engine.
+    /// </summary>
+    /// <value>
+    /// </value>
+    public SpeechSynthesizer SpeechSynthesisEngine {
+      get { return speechSynthesizer; }
+    }
 
     public CultureInfo Culture { get; } = CultureInfo.GetCultureInfoByIetfLanguageTag("en-US"); //do not use "en" here, have to use "en-US", GetInstalledVoices method doesn't support a fallback mechanism to more generic cultures
 
