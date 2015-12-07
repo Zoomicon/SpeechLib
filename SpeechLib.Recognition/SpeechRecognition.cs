@@ -1,6 +1,6 @@
 ﻿//Project: SpeechLib (http://SpeechLib.codeplex.com)
 //File: SpeechRecognition.cs
-//Version: 20151206
+//Version: 20151207
 
 using SpeechLib.Models;
 using System;
@@ -11,6 +11,7 @@ using System.IO;
 using Microsoft.Speech.Recognition;
 #else
 using System.Speech.Recognition;
+using System.Threading;
 #endif
 
 namespace SpeechLib.Recognition
@@ -38,13 +39,22 @@ namespace SpeechLib.Recognition
 
     public SpeechRecognition()
     {
+      Init();
+    }
+
+    protected void Init()
+    {
       speechRecognitionEngine = CreateSpeechRecognitionEngine();
+
       if (speechRecognitionEngine != null)
       {
+        //speechRecognitionEngine.SpeechDetected += SpeechDetected;
         speechRecognitionEngine.SpeechRecognized += SpeechRecognized;
         //speechRecognitionEngine.SpeechHypothesized += SpeechHypothesized;
         speechRecognitionEngine.SpeechRecognitionRejected += SpeechRecognitionRejected;
       }
+
+      SetInputToInitial();
     }
 
     #endregion
@@ -62,6 +72,7 @@ namespace SpeechLib.Recognition
         if (disposing)
         {
           // TODO: dispose managed state (managed objects).
+          Cleanup();
         }
 
         // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
@@ -84,6 +95,15 @@ namespace SpeechLib.Recognition
       Dispose(true);
       // TODO: uncomment the following line if the finalizer is overridden above.
       // GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Cleanup()
+    {
+      Stop();
+      //speechRecognitionEngine.SpeechDetected -= SpeechDetected;
+      speechRecognitionEngine.SpeechRecognized -= SpeechRecognized;
+      //speechRecognitionEngine.SpeechHypothesized -= SpeechHypothesized;
+      speechRecognitionEngine.SpeechRecognitionRejected -= SpeechRecognitionRejected;
     }
 
     #endregion
@@ -132,9 +152,19 @@ namespace SpeechLib.Recognition
       LoadGrammar(new Grammar(stream) { Name = name });
     }
 
-    public void SetInputToDefaultAudioDevice()
+    public void SetInputToDefaultAudioDevice() //note: sets input to system's default audio device, not to the specific speech recognizer's default, use SetInput for that
     {
       speechRecognitionEngine.SetInputToDefaultAudioDevice();
+    }
+
+    public void SetInputToNone()
+    {
+      speechRecognitionEngine.SetInputToNull();
+    }
+
+    public virtual void SetInputToInitial() //can override this at descendants
+    {
+      SetInputToDefaultAudioDevice();
     }
 
     public void Start(bool stopOnRecognition = false)
@@ -145,6 +175,16 @@ namespace SpeechLib.Recognition
     public void Stop()
     {
       speechRecognitionEngine.RecognizeAsyncStop();
+    }
+
+    public void Pause()
+    {
+      SetInputToNone(); //note: this can throw exceptions at the speech recognition thread if async speech recognition methods are used, need to catch and ignore them at a global exception handler in that case
+    }
+
+    public void Resume()
+    {
+      SetInputToInitial(); //note: this doesn't remember if input has been changed to other, just restores the initial one
     }
 
     #endregion

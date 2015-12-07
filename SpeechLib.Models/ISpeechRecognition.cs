@@ -1,6 +1,6 @@
 ﻿//Project: SpeechLib (http://SpeechLib.codeplex.com)
 //File: ISpeechRecognition.cs
-//Version: 20151206
+//Version: 20151207
 
 using System;
 using System.IO;
@@ -31,9 +31,13 @@ namespace SpeechLib.Models
     void LoadGrammar(Stream stream, string name);
 
     void SetInputToDefaultAudioDevice();
+    void SetInputToNone();
+    void SetInputToInitial(); //this can be a virtual method at some base class and overriden at descendants
 
     void Start(bool stopOnRecognition = false);
     void Stop();
+    void Pause();
+    void Resume();
 
     #endregion
 
