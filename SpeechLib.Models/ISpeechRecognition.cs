@@ -30,6 +30,9 @@ namespace SpeechLib.Models
     void LoadGrammar(string xml, string name);
     void LoadGrammar(Stream stream, string name);
 
+    void UnloadGrammar(Grammar grammar);
+    void UnloadAllGrammars();
+
     void SetInputToDefaultAudioDevice();
     void SetInputToNone();
     void SetInputToInitial(); //this can be a virtual method at some base class and overriden at descendants

@@ -158,6 +158,16 @@ namespace SpeechLib.Recognition
       LoadGrammar(new Grammar(stream) { Name = name });
     }
 
+    public void UnloadGrammar(Grammar grammar)
+    {
+      speechRecognitionEngine.UnloadGrammar(grammar);
+    }
+
+    public void UnloadAllGrammars()
+    {
+      speechRecognitionEngine.UnloadAllGrammars();
+    }
+
     public void SetInputToDefaultAudioDevice() //note: sets input to system's default audio device, not to the specific speech recognizer's default, use SetInput for that
     {
       speechRecognitionEngine.SetInputToDefaultAudioDevice();
