@@ -50,7 +50,9 @@ namespace SpeechLib.Recognition
 
       if (speechRecognitionEngine != null)
       {
-        speechRecognitionEngine.RecognizerUpdateReached += (s, e) => { while (paused) Thread.Sleep(PAUSE_LOOP_SLEEP); };
+        speechRecognitionEngine.RecognizerUpdateReached += (s, e) => {
+            while (paused) Thread.Sleep(PAUSE_LOOP_SLEEP);
+          };
 
         //speechRecognitionEngine.SpeechDetected += SpeechDetected;
         //speechRecognitionEngine.SpeechHypothesized += SpeechHypothesized;
