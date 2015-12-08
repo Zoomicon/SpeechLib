@@ -1,6 +1,6 @@
 ﻿//Project: SpeechLib (http://SpeechLib.codeplex.com)
 //File: SpeechRecognition.cs
-//Version: 20151207
+//Version: 20151208
 
 using SpeechLib.Models;
 using System;
@@ -25,13 +25,15 @@ namespace SpeechLib.Recognition
 
     #region --- Constants ---
 
-    private const string ACOUSTIC_MODEL_ADAPTATION = "AdaptationOn";
+    protected const string ACOUSTIC_MODEL_ADAPTATION = "AdaptationOn";
+    protected const int PAUSE_LOOP_SLEEP = 10; //msec
 
     #endregion
 
     #region --- Fields ---
 
     protected SpeechRecognitionEngine speechRecognitionEngine;
+    protected bool paused; //=false
 
     #endregion
 
@@ -48,9 +50,11 @@ namespace SpeechLib.Recognition
 
       if (speechRecognitionEngine != null)
       {
+        speechRecognitionEngine.RecognizerUpdateReached += (s, e) => { while (paused) Thread.Sleep(PAUSE_LOOP_SLEEP); };
+
         //speechRecognitionEngine.SpeechDetected += SpeechDetected;
-        speechRecognitionEngine.SpeechRecognized += SpeechRecognized;
         //speechRecognitionEngine.SpeechHypothesized += SpeechHypothesized;
+        speechRecognitionEngine.SpeechRecognized += SpeechRecognized;
         speechRecognitionEngine.SpeechRecognitionRejected += SpeechRecognitionRejected;
       }
 
@@ -172,19 +176,23 @@ namespace SpeechLib.Recognition
       speechRecognitionEngine.RecognizeAsync(stopOnRecognition ? RecognizeMode.Single : RecognizeMode.Multiple);
     }
 
-    public void Stop()
+    public void Stop(bool waitForCurrentRecognitionToComplete = true)
     {
-      speechRecognitionEngine.RecognizeAsyncStop();
+      if (waitForCurrentRecognitionToComplete)
+        speechRecognitionEngine.RecognizeAsyncStop();
+      else
+        speechRecognitionEngine.RecognizeAsyncCancel();
     }
 
     public void Pause()
     {
-      SetInputToNone(); //note: this can throw exceptions at the speech recognition thread if async speech recognition methods are used, need to catch and ignore them at a global exception handler in that case
+      paused = true;
+      speechRecognitionEngine.RequestRecognizerUpdate();
     }
 
     public void Resume()
     {
-      SetInputToInitial(); //note: this doesn't remember if input has been changed to other, just restores the initial one
+      paused = false;
     }
 
     #endregion
@@ -193,6 +201,14 @@ namespace SpeechLib.Recognition
 
     public event EventHandler<SpeechRecognitionEventArgs> Recognized;
     public event EventHandler NotRecognized;
+
+    //private void SpeechDetected(object sender, SpeechDetectedEventArgs e)
+    //{
+    //}
+
+    //private void SpeechHypothesized(object sender, SpeechHypothesizedEventArgs e)
+    //{
+    //}
 
     private void SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
     {
@@ -205,11 +221,6 @@ namespace SpeechLib.Recognition
       if (NotRecognized != null)
         NotRecognized(this, null);
     }
-
-    //private void SpeechHypothesized(object sender, SpeechHypothesizedEventArgs e)
-    //{
-    //  throw new NotImplementedException();
-    //}
 
     #endregion
 
