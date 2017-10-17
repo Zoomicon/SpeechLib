@@ -1,5 +1,5 @@
 SpeechLib
-http://SpeechLib.codeplex.com
+https://github.com/Zoomicon/SpeechLib
 
 
 Project Description
