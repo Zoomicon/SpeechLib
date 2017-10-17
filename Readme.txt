@@ -1,9 +1,7 @@
-SpeechLib
-https://github.com/Zoomicon/SpeechLib
+# SpeechLib (https://github.com/Zoomicon/SpeechLib)
 
 
-Project Description
---------------------
+## Project Description
 
 .NET Library providing:
 * Speech Synthesis
@@ -11,7 +9,7 @@ Project Description
 * Speech Recognition using Kinect V1 Sensor Microphone Array as input
 
 
-Requirements
--------------
+## Requirements
+
 * Microsoft Kinect Runtime 1.8 (or SDK 1.8 if you use the Kinect for Xbox 360 sensor instead of Kinect for Windows v1)
 * Microsoft Speech Runtime
