@@ -21,9 +21,9 @@ https://github.com/Zoomicon/SpeechLib
 The latest version has been preset to use the Windows Speech API instead of Microsoft Speech one. There is a conditional compilation switch in the source code that you can define or comment out to toggle this.
 
 You can check out the following projects to see how a dictionary can be built. The first one shows how you can do it both declaratively (SGML) and via code:
-- SpeechTurtle (http://github.com/zoomicon/speechturtle - pending move from http://speechturtle.codeplex.com)
+- SpeechTurtle (http://github.com/zoomicon/SpeechTurtle)
 - Hotspotizer (my fork at http://github.com/birbilis/hotspotizer)
-- TrackingCam (http://trackingcam.codeplex.com - pending move from http://trackingcam.codeplex.com)
+- TrackingCam (http://github.com/zoomicon/TrackingCam)
 
 also, there is an issue with the Windows Speech API I think regarding recognition quality for commands. The Windows Speech library has less languages, but user can train it from the control panel (there is a speech item there). There is an alternative API called Microsoft Speech that is very similar (only the SGML syntax needed some small changes to support both of those). That one has its own SDK (Kinect runtime installs it) and has more generic recognition (less tuned to a specific user) with more languages. So if you get wrong recognition, maybe you should switch to the Microsoft Speech that Kinect team suggests instead.
 
